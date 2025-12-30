@@ -138,7 +138,7 @@ const Admin = ({ apiUrl, onBack }) => {
         
         {/* Header */}
         <div className="flex justify-between items-center pb-6 border-b border-neutral-800">
-          <h1 className="text-2xl font-bold text-white">Stratum Dashboard</h1>
+          <h1 className="text-2xl font-bold text-white">Gummyte Dashboard</h1>
           <div className="flex gap-4">
             <button onClick={() => fetchData(token, activeTab)} className="p-2 hover:bg-neutral-800 rounded text-neutral-400 hover:text-white">
               <RefreshCw size={20} className={loading ? 'animate-spin' : ''} />

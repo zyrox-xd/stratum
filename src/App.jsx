@@ -3,7 +3,7 @@ import { Menu, X, ChevronDown, ChevronUp, Activity, Zap, ShieldCheck, Clock, Che
 // Import the Dashboard (which handles the Auth)
 import Admin from './Dashboard.jsx';
 
-const Stratum = () => {
+const Gummyte = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
@@ -112,7 +112,7 @@ const Stratum = () => {
       <nav className="fixed top-0 w-full z-50 bg-neutral-950/90 backdrop-blur-md border-b border-neutral-900">
         <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
           <button onClick={() => navigate('home')} className="text-lg font-bold tracking-widest text-white uppercase">
-            Stratum
+            Gummyte
           </button>
           
           {/* Desktop Nav */}
@@ -292,7 +292,7 @@ const Stratum = () => {
                 <h2 className="text-2xl font-semibold text-white">Our Approach.</h2>
               </div>
               <p className="text-neutral-400 leading-relaxed">
-                We view Stratum as a system, not just a brand. Our decisions are governed by a strict set of operating principles designed to protect long-term trust over short-term revenue.
+                We view Gummyte as a system, not just a brand. Our decisions are governed by a strict set of operating principles designed to protect long-term trust over short-term revenue.
               </p>
               
               <div className="grid gap-8 border-l border-neutral-900 pl-6">
@@ -531,7 +531,7 @@ const Stratum = () => {
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-neutral-500">
                  <div className="p-4 border border-neutral-900">
                    <span className="block text-xs font-mono text-neutral-600 mb-1">EMAIL</span>
-                   connect@stratum.lab
+                   connect@gummyte.lab
                  </div>
                  <div className="p-4 border border-neutral-900">
                    <span className="block text-xs font-mono text-neutral-600 mb-1">LOCATION</span>
@@ -584,7 +584,7 @@ const Stratum = () => {
               <div className="space-y-3">
                 <h3 className="text-white font-medium">4. Your Rights</h3>
                 <p className="text-sm text-neutral-500 leading-relaxed">
-                  You have the right to request deletion of your data at any time. Simply email us at connect@stratum.lab with "Unsubscribe" or "Delete My Data" in the subject line.
+                  You have the right to request deletion of your data at any time. Simply email us at connect@gummyte.lab with "Unsubscribe" or "Delete My Data" in the subject line.
                 </p>
               </div>
             </div>
@@ -601,7 +601,7 @@ const Stratum = () => {
                </div>
               <h2 className="text-2xl font-semibold text-white">Terms of Use.</h2>
               <p className="text-neutral-400 leading-relaxed">
-                By accessing Stratum, you agree to these operating terms.
+                By accessing Gummyte, you agree to these operating terms.
               </p>
             </div>
 
@@ -616,14 +616,14 @@ const Stratum = () => {
               <div className="space-y-3">
                 <h3 className="text-white font-medium">2. Product Status</h3>
                 <p className="text-sm text-neutral-500 leading-relaxed">
-                  Stratum is currently in a pre-launch phase. No products are currently available for sale. Any timelines mentioned are estimates based on stability testing protocols and are subject to change to ensure quality.
+                  Gummyte is currently in a pre-launch phase. No products are currently available for sale. Any timelines mentioned are estimates based on stability testing protocols and are subject to change to ensure quality.
                 </p>
               </div>
 
               <div className="space-y-3">
                 <h3 className="text-white font-medium">3. Intellectual Property</h3>
                 <p className="text-sm text-neutral-500 leading-relaxed">
-                  All content, branding, and design elements on this site are the exclusive property of Stratum Performance Labs. Unauthorized reproduction is prohibited.
+                  All content, branding, and design elements on this site are the exclusive property of Gummyte Performance Labs. Unauthorized reproduction is prohibited.
                 </p>
               </div>
 
@@ -644,7 +644,7 @@ const Stratum = () => {
         <div className="max-w-4xl mx-auto px-6 space-y-6">
           <p className="text-xs text-neutral-600 tracking-widest uppercase">
             <span onClick={() => navigate('admin')} className="cursor-default hover:text-neutral-800 transition-colors">
-              Stratum Performance Labs &copy; 2024
+              Gummyte Performance Labs &copy; 2024
             </span>
           </p>
           <div className="flex justify-center gap-6 text-xs text-neutral-500">
@@ -687,4 +687,4 @@ const FaqItem = ({ question, answer }) => {
   );
 };
 
-export default Stratum;
+export default Gummyte;
