@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, ChevronDown, ChevronUp, Activity, Zap, ShieldCheck, Clock, CheckCircle2, XCircle, FileText, Send, Loader2, Lock, Scale } from 'lucide-react';
+import Admin from './Dashboard.jsx';
 
 const Stratum = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -12,6 +13,7 @@ const Stratum = () => {
   const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
   const [contactStatus, setContactStatus] = useState('idle');
 
+  // --- FIX 1: TYPO CORRECTION ---
   // API Base URL (Change this to your production URL when deploying)
   const API_URL = 'https://stratum-backend-8hhn.onrender.com/api';
 
@@ -97,6 +99,11 @@ const Stratum = () => {
     { label: "FSSAI Compliance Review", status: "pending", date: "Pending" },
     { label: "Commercial Production", status: "pending", date: "TBD" }
   ];
+
+  // --- FIX 2: MOVED ADMIN LOGIC HERE (BEFORE THE RETURN) ---
+  if (activeSection === 'admin') {
+    return <Admin apiUrl={API_URL} onBack={() => navigate('home')} />;
+  }
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-300 font-sans selection:bg-neutral-800 selection:text-white">
@@ -635,7 +642,10 @@ const Stratum = () => {
       <footer className="border-t border-neutral-900 py-12 text-center">
         <div className="max-w-4xl mx-auto px-6 space-y-6">
           <p className="text-xs text-neutral-600 tracking-widest uppercase">
-            Stratum Performance Labs &copy; 2024
+            {/* --- FIX 3: ADDED SECRET DOOR ONCLICK --- */}
+            <span onClick={() => navigate('admin')} className="cursor-default hover:text-neutral-800 transition-colors">
+              Stratum Performance Labs &copy; 2024
+            </span>
           </p>
           <div className="flex justify-center gap-6 text-xs text-neutral-500">
             <button onClick={() => navigate('contact')} className="hover:text-white transition-colors">Contact</button>
