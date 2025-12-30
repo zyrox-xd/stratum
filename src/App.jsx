@@ -13,7 +13,7 @@ const Stratum = () => {
   const [contactStatus, setContactStatus] = useState('idle');
 
   // API Base URL (Change this to your production URL when deploying)
-  const API_URL = 'http://localhost:5000/api';
+  const API_URL = 'https://stratum-backend-8hhn.onrender.com/api';
 
   const navigate = (section) => {
     setActiveSection(section);
