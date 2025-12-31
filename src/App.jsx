@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Activity, Zap, CheckCircle2, XCircle, FileText, Send, Loader2, Lock, Scale, Clock, ChevronDown, ChevronUp } from 'lucide-react';
+import { Menu, X, Activity, Zap, CheckCircle2, XCircle, FileText, Send, Loader2, Lock, Scale, Clock, ChevronDown, ChevronUp, Instagram, Youtube, Mail, ShieldCheck, AlertTriangle } from 'lucide-react';
 // Import the Dashboard
 import Admin from './Dashboard.jsx';
 // Import your new Logo
@@ -69,24 +69,23 @@ const Gummyte = () => {
 
   // Data Content
   const faqs = [
-    { question: "Is creatine safe?", answer: "Yes. Creatine is one of the most researched sports supplements in history. Extensive studies confirm its safety profile for long-term use in healthy individuals." },
-    { question: "Is this product vegetarian?", answer: "Yes. Our gummies use synthesized Creatine Monohydrate, making them 100% vegetarian and suitable for plant-based diets." },
-    { question: "Will it make me bulky?", answer: "Creatine draws water into muscle cells (intracellular), not under the skin (subcutaneous). This hydration supports performance, not fat gain." },
-    { question: "Do I need to 'load' it?", answer: "No. Taking a standard daily dose consistently will saturate your muscles effectively over 3-4 weeks without gastric distress." },
-    { question: "Who is this not for?", answer: "If you have pre-existing kidney conditions, consult a doctor first. Not recommended for children or pregnant women without medical advice." }
+    { question: "Is creatine safe?", answer: "Yes. It is the single most researched sports supplement in history. Safety profile is confirmed for daily, long-term use." },
+    { question: "Is this product vegetarian?", answer: "100%. We use synthesized Creatine Monohydrate and pectin-based gelling agents. No gelatin. No animal byproducts." },
+    { question: "Will it make me bulky?", answer: "No. Creatine hydrates muscle cells (intracellular), not the skin (subcutaneous). It supports performance output, not fat gain." },
+    { question: "Do I need to 'load' it?", answer: "No. The 'loading phase' causes bloating. Taking 5g daily consistently saturates muscles effectively over 3-4 weeks with zero distress." },
+    { question: "When do you launch?", answer: "When the stability testing confirms 100% potency retention. We prioritize quality over speed." }
   ];
 
   const statusItems = [
-    { label: "Formula Validation", status: "complete", date: "Q3 2024" },
-    { label: "Flavor Profile Optimization", status: "complete", date: "Q4 2024" },
-    { label: "Microbial Safety Testing", status: "complete", date: "Jan 2025" },
-    { label: "Accelerated Stability Testing", status: "active", date: "In Progress" },
-    { label: "FSSAI Compliance Review", status: "pending", date: "Pending" },
-    { label: "Commercial Production", status: "pending", date: "TBD" }
+    { label: "Formula Validation", status: "complete", date: "Q3 2025" },
+    { label: "Brand Identity", status: "complete", date: "Q4 2025" },
+    { label: "Web Infrastructure", status: "complete", date: "Dec 2025" },
+    { label: "Vendor Procurement", status: "active", date: "In Progress" },
+    { label: "Sample Verification", status: "pending", date: "Jan 2026" },
+    { label: "Market Launch", status: "pending", date: "Q1 2026" }
   ];
 
   return (
-    // ADDED: overflow-x-hidden to prevent horizontal scrolling on mobile
     <div className="min-h-screen bg-neutral-950 text-neutral-300 font-sans selection:bg-sky-900 selection:text-white overflow-x-hidden">
       
       {/* Navigation */}
@@ -96,7 +95,10 @@ const Gummyte = () => {
           {/* Logo Section */}
           <button onClick={() => navigate('home')} className="hover:opacity-80 transition-opacity flex items-center gap-3">
             <img src={logo} alt="Gummyte" className="h-8 md:h-10 object-contain" />
-            <span className="text-white font-bold tracking-widest uppercase text-lg hidden sm:block">Gummyte</span>
+            <div className="flex flex-col items-start leading-none">
+                <span className="text-white font-bold tracking-widest uppercase text-lg hidden sm:block">Gummyte</span>
+                <span className="text-sky-500 font-bold tracking-widest uppercase text-[10px] hidden sm:block">Core</span>
+            </div>
           </button>
           
           {/* Desktop Nav */}
@@ -112,7 +114,7 @@ const Gummyte = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Toggle - Increased touch target size */}
+          {/* Mobile Menu Toggle */}
           <button className="md:hidden text-neutral-400 p-2 -mr-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -137,7 +139,6 @@ const Gummyte = () => {
       </nav>
 
       {/* Main Content Area */}
-      {/* CHANGED: pt-24 to pt-28 on mobile for more breathing room */}
       <main className="pt-28 md:pt-24 pb-20 px-6 max-w-2xl mx-auto min-h-screen flex flex-col justify-center">
         
         {/* VIEW: HOME */}
@@ -146,8 +147,6 @@ const Gummyte = () => {
             
             {/* HERO SECTION */}
             <header className="space-y-8 relative">
-              {/* BRAND ELEMENT: Floating Cube Animation */}
-              {/* UPDATED: Adjusted opacity and position for mobile to not overlap text */}
               <div className="absolute -top-10 -right-4 md:-top-10 md:-right-20 opacity-30 md:opacity-40 pointer-events-none">
                  <div className="relative w-24 h-24 md:w-48 md:h-48">
                     <div className="absolute inset-0 bg-sky-500/20 blur-3xl rounded-full animate-pulse"></div>
@@ -158,9 +157,9 @@ const Gummyte = () => {
               
               <div className="space-y-6 relative z-10">
                 <span className="text-sky-400 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase bg-sky-950/30 px-3 py-1 rounded border border-sky-900/50 inline-block">
-                  Phase One: Education
+                  System: Gummyte Core // Status: Sourcing
                 </span>
-                {/* SCALED: Text sizes for mobile readability */}
+                
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-white tracking-tight leading-tight">
                   Consistency <br/> defines progress. <br />
                   <span className="text-neutral-600">Everything else is noise.</span>
@@ -175,15 +174,15 @@ const Gummyte = () => {
             {/* INFO CARDS */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-neutral-900 pt-8">
               <div className="p-6 bg-neutral-900/40 backdrop-blur-sm rounded-sm border border-neutral-900 hover:border-sky-900/50 transition-colors group">
-                <h3 className="text-white font-medium mb-2 group-hover:text-sky-400 transition-colors">What is this?</h3>
+                <h3 className="text-white font-medium mb-2 group-hover:text-sky-400 transition-colors">What is Gummyte?</h3>
                 <p className="text-sm text-neutral-500 leading-relaxed">
                   A simplified creatine delivery system. 5g effective serving in a convenient chew. Zero preparation required.
                 </p>
               </div>
               <div className="p-6 bg-neutral-900/40 backdrop-blur-sm rounded-sm border border-neutral-900 hover:border-sky-900/50 transition-colors group">
-                <h3 className="text-white font-medium mb-2 group-hover:text-sky-400 transition-colors">Current Status</h3>
+                <h3 className="text-white font-medium mb-2 group-hover:text-sky-400 transition-colors">System Status</h3>
                 <p className="text-sm text-neutral-500 leading-relaxed">
-                  We are in the Stability Testing phase. We do not rush formulation for the sake of a launch date.
+                   Infrastructure is live. We are currently finalizing procurement of the purest vegetarian creatine source available.
                 </p>
                 <button onClick={() => navigate('status')} className="mt-4 text-xs font-bold text-sky-500 hover:text-white transition-colors uppercase tracking-wider flex items-center gap-1 p-2 -ml-2">
                   View Timeline <span className="text-lg">→</span>
@@ -233,12 +232,6 @@ const Gummyte = () => {
                 </div>
               </div>
             </div>
-
-            <div className="bg-sky-950/20 p-6 border-l-2 border-sky-500">
-              <p className="text-sm text-sky-100/80 italic">
-                "We aren't claiming gummies are chemically superior to powder. We are claiming they are behaviorally superior for consistency."
-              </p>
-            </div>
           </div>
         )}
 
@@ -251,7 +244,6 @@ const Gummyte = () => {
             </div>
 
             <div className="space-y-8 relative">
-              {/* Connecting Line */}
               <div className="absolute left-[11px] top-4 bottom-4 w-px bg-neutral-900"></div>
 
               <div className="group relative pl-8">
@@ -310,20 +302,6 @@ const Gummyte = () => {
                   </p>
                 </div>
               </div>
-            </div>
-
-            <div className="bg-neutral-900/30 p-8 border border-neutral-900 space-y-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <FileText size={18} className="text-neutral-400" />
-                <h3 className="text-white font-medium text-lg">Decision Logic</h3>
-              </div>
-              <ul className="space-y-3 text-sm text-neutral-500 font-mono">
-                {['Does this increase daily consistency?', 'Is the science unequivocal?', 'Can we transparently source every ingredient?', 'Is the shelf-stability proven?'].map((item, i) => (
-                   <li key={i} className="flex gap-3">
-                    <span className="text-sky-500">→</span> {item}
-                  </li>
-                ))}
-              </ul>
             </div>
 
             {/* Anti-List */}
@@ -499,23 +477,35 @@ const Gummyte = () => {
             <div className="space-y-4">
                <div className="flex items-center gap-3">
                  <Lock size={20} className="text-sky-500" />
-                 <span className="text-sky-400 text-xs font-bold tracking-[0.2em] uppercase">Legal</span>
+                 <span className="text-sky-400 text-xs font-bold tracking-[0.2em] uppercase">Data Protocol</span>
                </div>
               <h2 className="text-2xl font-semibold text-white">Privacy Policy.</h2>
               <p className="text-neutral-400 leading-relaxed">
-                Effective Date: January 1, 2024. <br/>
-                We believe your data is yours. We optimize for privacy, not tracking.
+                Effective Date: January 1, 2026. <br/>
+                Your data is your property. We operate on a strict "Need-to-Know" basis.
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-10 border-t border-neutral-900 pt-8">
                 <div>
-                   <h3 className="text-white font-medium mb-2">1. Information Collection</h3>
-                   <p className="text-sm text-neutral-500">We currently collect only the information you voluntarily provide via our forms.</p>
+                   <h3 className="text-white font-medium mb-3 flex items-center gap-2"><ShieldCheck size={16} className="text-sky-500"/> 1. Information Collection</h3>
+                   <p className="text-sm text-neutral-500 leading-relaxed">
+                     We currently collect only the information you voluntarily provide via our "Notify" or "Contact" forms (Name, Email). We do not use third-party cookies to track your behavior across other websites.
+                   </p>
                 </div>
                 <div>
-                   <h3 className="text-white font-medium mb-2">2. Use of Information</h3>
-                   <p className="text-sm text-neutral-500">Emails are used solely for product updates. We do not sell data.</p>
+                   <h3 className="text-white font-medium mb-3 flex items-center gap-2"><CheckCircle2 size={16} className="text-sky-500"/> 2. Use of Information</h3>
+                   <p className="text-sm text-neutral-500 leading-relaxed">
+                     <strong>Waitlist Emails:</strong> Used solely to notify you when the product launches. <br/>
+                     <strong>Inquiries:</strong> Used solely to respond to your specific questions.<br/>
+                     We do not sell, rent, or trade your data to advertisers. Ever.
+                   </p>
+                </div>
+                <div>
+                   <h3 className="text-white font-medium mb-3 flex items-center gap-2"><Lock size={16} className="text-sky-500"/> 3. Data Security</h3>
+                   <p className="text-sm text-neutral-500 leading-relaxed">
+                     Your data is stored in secure, encrypted databases. Access is restricted to core team members for operational purposes only.
+                   </p>
                 </div>
             </div>
           </div>
@@ -527,18 +517,32 @@ const Gummyte = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                  <Scale size={20} className="text-sky-500" />
-                 <span className="text-sky-400 text-xs font-bold tracking-[0.2em] uppercase">Legal</span>
+                 <span className="text-sky-400 text-xs font-bold tracking-[0.2em] uppercase">Legal Framework</span>
                </div>
               <h2 className="text-2xl font-semibold text-white">Terms of Use.</h2>
+              <p className="text-neutral-400">By accessing Gummyte, you agree to these terms.</p>
             </div>
-            <div className="space-y-8">
-                <div>
-                   <h3 className="text-white font-medium mb-2">1. Educational Purpose</h3>
-                   <p className="text-sm text-neutral-500">The content on this website is for educational purposes only.</p>
+            
+            <div className="space-y-10 border-t border-neutral-900 pt-8">
+                <div className="p-4 border border-red-900/30 bg-red-900/10 rounded">
+                   <h3 className="text-red-400 font-medium mb-2 flex items-center gap-2"><AlertTriangle size={16} /> 1. Medical Disclaimer</h3>
+                   <p className="text-sm text-neutral-400 leading-relaxed">
+                     The content on this site is for educational purposes only and does not constitute medical advice. Creatine is a dietary supplement. You should consult a physician before beginning any supplementation protocol, especially if you have pre-existing kidney conditions.
+                   </p>
                 </div>
+                
                 <div>
                    <h3 className="text-white font-medium mb-2">2. Product Status</h3>
-                   <p className="text-sm text-neutral-500">Gummyte is currently in a pre-launch phase.</p>
+                   <p className="text-sm text-neutral-500 leading-relaxed">
+                     Gummyte is currently in a <strong>Pre-Launch / Development Phase</strong>. No products are currently for sale. Information regarding formulation and timelines is subject to change based on stability testing results.
+                   </p>
+                </div>
+
+                <div>
+                   <h3 className="text-white font-medium mb-2">3. Governing Law</h3>
+                   <p className="text-sm text-neutral-500 leading-relaxed">
+                     These terms shall be governed by the laws of India. Any disputes arising in connection with these terms shall be subject to the exclusive jurisdiction of the courts located in Bengaluru, Karnataka.
+                   </p>
                 </div>
             </div>
           </div>
@@ -551,21 +555,29 @@ const Gummyte = () => {
         <div className="max-w-4xl mx-auto px-6 space-y-6">
           <p className="text-xs text-neutral-600 tracking-widest uppercase">
             <span onClick={() => navigate('admin')} className="cursor-default hover:text-neutral-800 transition-colors">
-              Gummyte Performance Labs &copy; 2024
+              Gummyte Performance Labs &copy; 2026
             </span>
           </p>
-          {/* UPDATED: Added flex-wrap for better mobile scaling */}
-          <div className="flex justify-center flex-wrap gap-x-6 gap-y-3 text-xs text-neutral-500">
-            <button onClick={() => navigate('contact')} className="hover:text-white transition-colors">Contact</button>
-            <span className="text-neutral-800 hidden sm:inline">|</span>
-            <button onClick={() => navigate('privacy')} className="hover:text-white transition-colors">Privacy</button>
-            <span className="text-neutral-800 hidden sm:inline">|</span>
-            <button onClick={() => navigate('terms')} className="hover:text-white transition-colors">Terms</button>
-            <span className="text-neutral-800 hidden sm:inline">|</span>
-            <button onClick={() => navigate('status')} className="hover:text-white transition-colors">Transparency</button>
+          
+          {/* Socials & Links */}
+          <div className="flex flex-col items-center gap-4">
+             <div className="flex gap-4">
+                <a href="https://instagram.com/gummytecore" target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-sky-500 transition-colors"><Instagram size={18} /></a>
+                <a href="https://youtube.com/@gummyte" target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-red-500 transition-colors"><Youtube size={18} /></a>
+                <a href="mailto:gummytecore@gmail.com" className="text-neutral-500 hover:text-white transition-colors"><Mail size={18} /></a>
+             </div>
+             
+             <div className="flex justify-center flex-wrap gap-x-6 gap-y-3 text-xs text-neutral-500">
+                <button onClick={() => navigate('contact')} className="hover:text-white transition-colors">Contact</button>
+                <span className="text-neutral-800 hidden sm:inline">|</span>
+                <button onClick={() => navigate('privacy')} className="hover:text-white transition-colors">Privacy</button>
+                <span className="text-neutral-800 hidden sm:inline">|</span>
+                <button onClick={() => navigate('status')} className="hover:text-white transition-colors">Transparency</button>
+             </div>
           </div>
+          
           <p className="text-[10px] text-neutral-700 max-w-lg mx-auto leading-relaxed px-4">
-            These statements have not been evaluated by the FSSAI. This product is not intended to diagnose, treat, cure, or prevent any disease. Results vary by individual.
+            These statements have not been evaluated by the FSSAI. Results vary by individual.
           </p>
         </div>
       </footer>
