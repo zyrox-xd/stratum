@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Activity, Zap, CheckCircle2, XCircle, FileText, Send, Loader2, Lock, Scale, Clock } from 'lucide-react';
+import { Menu, X, Activity, Zap, CheckCircle2, XCircle, FileText, Send, Loader2, Lock, Scale, Clock, ChevronDown, ChevronUp } from 'lucide-react';
 // Import the Dashboard
 import Admin from './Dashboard.jsx';
 // Import your new Logo
@@ -86,8 +86,8 @@ const Gummyte = () => {
   ];
 
   return (
-    // Updated Selection Color to match Logo Blue (Sky-500)
-    <div className="min-h-screen bg-neutral-950 text-neutral-300 font-sans selection:bg-sky-900 selection:text-white">
+    // ADDED: overflow-x-hidden to prevent horizontal scrolling on mobile
+    <div className="min-h-screen bg-neutral-950 text-neutral-300 font-sans selection:bg-sky-900 selection:text-white overflow-x-hidden">
       
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-900">
@@ -95,10 +95,7 @@ const Gummyte = () => {
           
           {/* Logo Section */}
           <button onClick={() => navigate('home')} className="hover:opacity-80 transition-opacity flex items-center gap-3">
-            {/* Logo Image */}
             <img src={logo} alt="Gummyte" className="h-8 md:h-10 object-contain" />
-            
-            {/* Text is hidden on mobile if your logo already has text, otherwise keep it */}
             <span className="text-white font-bold tracking-widest uppercase text-lg hidden sm:block">Gummyte</span>
           </button>
           
@@ -115,60 +112,60 @@ const Gummyte = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button className="md:hidden text-neutral-400" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {/* Mobile Menu Toggle - Increased touch target size */}
+          <button className="md:hidden text-neutral-400 p-2 -mr-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Nav */}
         {isMenuOpen && (
-          <div className="md:hidden bg-neutral-950 border-b border-neutral-900 absolute w-full px-6 py-6 flex flex-col gap-6 animate-fade-in">
+          <div className="md:hidden bg-neutral-950 border-b border-neutral-900 absolute w-full px-6 py-6 flex flex-col gap-6 animate-fade-in shadow-2xl">
             {['Rationale', 'Science', 'Approach', 'Status', 'FAQ'].map((item) => (
               <button 
                 key={item}
                 onClick={() => navigate(item.toLowerCase())}
-                className="text-left text-sm font-medium text-neutral-400 hover:text-white uppercase tracking-wider"
+                className="text-left text-base font-medium text-neutral-400 hover:text-white uppercase tracking-wider py-1"
               >
                 {item}
               </button>
             ))}
             <div className="h-px bg-neutral-900 w-full my-2"></div>
-            <button onClick={() => navigate('contact')} className="text-left text-sm font-medium text-neutral-500 uppercase tracking-wider">Contact</button>
+            <button onClick={() => navigate('contact')} className="text-left text-base font-medium text-sky-500 uppercase tracking-wider py-1">Contact</button>
           </div>
         )}
       </nav>
 
       {/* Main Content Area */}
-      <main className="pt-24 pb-20 px-6 max-w-2xl mx-auto min-h-screen flex flex-col justify-center">
+      {/* CHANGED: pt-24 to pt-28 on mobile for more breathing room */}
+      <main className="pt-28 md:pt-24 pb-20 px-6 max-w-2xl mx-auto min-h-screen flex flex-col justify-center">
         
         {/* VIEW: HOME */}
         {activeSection === 'home' && (
-          <div className="animate-fade-in space-y-16">
+          <div className="animate-fade-in space-y-12 md:space-y-16">
             
             {/* HERO SECTION */}
             <header className="space-y-8 relative">
-              {/* BRAND ELEMENT: Floating "Active Core" Cube Animation */}
-              {/* This mimics the blue square in your logo */}
-              <div className="absolute -top-10 -right-10 md:-right-20 opacity-40 pointer-events-none">
-                 <div className="relative w-32 h-32 md:w-48 md:h-48">
-                    {/* Outer Glow */}
+              {/* BRAND ELEMENT: Floating Cube Animation */}
+              {/* UPDATED: Adjusted opacity and position for mobile to not overlap text */}
+              <div className="absolute -top-10 -right-4 md:-top-10 md:-right-20 opacity-30 md:opacity-40 pointer-events-none">
+                 <div className="relative w-24 h-24 md:w-48 md:h-48">
                     <div className="absolute inset-0 bg-sky-500/20 blur-3xl rounded-full animate-pulse"></div>
-                    {/* The Cube */}
                     <div className="absolute inset-4 border border-sky-500/30 bg-sky-900/10 backdrop-blur-sm transform rotate-12 rounded-xl"></div>
                     <div className="absolute inset-8 bg-sky-500/20 rounded-lg transform -rotate-6"></div>
                  </div>
               </div>
               
               <div className="space-y-6 relative z-10">
-                <span className="text-sky-400 text-xs font-bold tracking-[0.2em] uppercase bg-sky-950/30 px-3 py-1 rounded border border-sky-900/50">
+                <span className="text-sky-400 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase bg-sky-950/30 px-3 py-1 rounded border border-sky-900/50 inline-block">
                   Phase One: Education
                 </span>
-                <h1 className="text-4xl md:text-6xl font-semibold text-white tracking-tight leading-tight">
+                {/* SCALED: Text sizes for mobile readability */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-white tracking-tight leading-tight">
                   Consistency <br/> defines progress. <br />
                   <span className="text-neutral-600">Everything else is noise.</span>
                 </h1>
-                <p className="text-lg text-neutral-400 leading-relaxed max-w-lg border-l-2 border-neutral-800 pl-4">
+                <p className="text-base md:text-lg text-neutral-400 leading-relaxed max-w-lg border-l-2 border-neutral-800 pl-4">
                   The Gummyte Standard. 5g Pure Creatine Monohydrate. <br/>
                   Built for the daily routine, not the highlight reel.
                 </p>
@@ -188,17 +185,17 @@ const Gummyte = () => {
                 <p className="text-sm text-neutral-500 leading-relaxed">
                   We are in the Stability Testing phase. We do not rush formulation for the sake of a launch date.
                 </p>
-                <button onClick={() => navigate('status')} className="mt-4 text-xs font-bold text-sky-500 hover:text-white transition-colors uppercase tracking-wider flex items-center gap-1">
+                <button onClick={() => navigate('status')} className="mt-4 text-xs font-bold text-sky-500 hover:text-white transition-colors uppercase tracking-wider flex items-center gap-1 p-2 -ml-2">
                   View Timeline <span className="text-lg">→</span>
                 </button>
               </div>
             </div>
 
-            <div className="flex gap-6 pt-4">
-              <button onClick={() => navigate('rationale')} className="text-sm font-bold text-white border-b border-white pb-1 hover:text-sky-400 hover:border-sky-400 transition-colors">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4">
+              <button onClick={() => navigate('rationale')} className="text-sm font-bold text-white border-b border-white pb-1 hover:text-sky-400 hover:border-sky-400 transition-colors w-max">
                 Understand the Logic
               </button>
-              <button onClick={() => navigate('approach')} className="text-sm font-bold text-neutral-500 border-b border-transparent pb-1 hover:text-white transition-colors">
+              <button onClick={() => navigate('approach')} className="text-sm font-bold text-neutral-500 border-b border-transparent pb-1 hover:text-white transition-colors w-max">
                 Read our Approach
               </button>
             </div>
@@ -216,7 +213,7 @@ const Gummyte = () => {
             </div>
 
             <div className="grid gap-6">
-              <div className="flex gap-4 items-start p-4 border border-neutral-900/50 rounded-lg">
+              <div className="flex gap-4 items-start p-4 border border-neutral-900/50 rounded-lg bg-neutral-900/20">
                 <div className="mt-1 text-sky-500"><Activity size={20} /></div>
                 <div>
                   <h3 className="text-white font-medium">The Consistency Problem</h3>
@@ -226,7 +223,7 @@ const Gummyte = () => {
                 </div>
               </div>
               
-              <div className="flex gap-4 items-start p-4 border border-neutral-900/50 rounded-lg">
+              <div className="flex gap-4 items-start p-4 border border-neutral-900/50 rounded-lg bg-neutral-900/20">
                 <div className="mt-1 text-sky-500"><Zap size={20} /></div>
                 <div>
                   <h3 className="text-white font-medium">The Practical Solution</h3>
@@ -366,16 +363,16 @@ const Gummyte = () => {
             <div className="bg-neutral-900/30 border border-neutral-900 rounded-sm overflow-hidden">
               <div className="grid grid-cols-1 divide-y divide-neutral-900">
                 {statusItems.map((item, index) => (
-                  <div key={index} className="p-4 flex items-center justify-between">
+                  <div key={index} className="p-4 flex items-center justify-between hover:bg-neutral-900/50 transition-colors">
                     <div className="flex items-center gap-3">
-                      {item.status === 'complete' && <CheckCircle2 size={16} className="text-emerald-900/80" />}
-                      {item.status === 'active' && <Clock size={16} className="text-sky-400 animate-pulse" />}
-                      {item.status === 'pending' && <div className="w-4 h-4 rounded-full border border-neutral-800"></div>}
+                      {item.status === 'complete' && <CheckCircle2 size={16} className="text-emerald-900/80 flex-shrink-0" />}
+                      {item.status === 'active' && <Clock size={16} className="text-sky-400 animate-pulse flex-shrink-0" />}
+                      {item.status === 'pending' && <div className="w-4 h-4 rounded-full border border-neutral-800 flex-shrink-0"></div>}
                       <span className={`text-sm ${item.status === 'active' ? 'text-white font-medium' : 'text-neutral-500'}`}>
                         {item.label}
                       </span>
                     </div>
-                    <span className="text-xs font-mono text-neutral-600 uppercase tracking-wider">{item.date}</span>
+                    <span className="text-xs font-mono text-neutral-600 uppercase tracking-wider whitespace-nowrap ml-4">{item.date}</span>
                   </div>
                 ))}
               </div>
@@ -393,12 +390,12 @@ const Gummyte = () => {
                   placeholder="email@address.com" 
                   required
                   disabled={notifyStatus === 'success'}
-                  className="bg-neutral-950 border border-neutral-800 text-white px-4 py-2 text-sm w-full focus:outline-none focus:border-sky-900 transition-colors disabled:opacity-50"
+                  className="bg-neutral-950 border border-neutral-800 text-white px-4 py-3 text-sm w-full focus:outline-none focus:border-sky-900 transition-colors disabled:opacity-50"
                 />
                 <button 
                   type="submit" 
                   disabled={notifyStatus === 'loading' || notifyStatus === 'success'}
-                  className="bg-neutral-200 text-neutral-900 px-6 py-2 text-sm font-bold uppercase tracking-wider hover:bg-white transition-colors disabled:opacity-50 flex items-center justify-center min-w-[100px]"
+                  className="bg-neutral-200 text-neutral-900 px-6 py-3 text-sm font-bold uppercase tracking-wider hover:bg-white transition-colors disabled:opacity-50 flex items-center justify-center min-w-[100px]"
                 >
                   {notifyStatus === 'loading' ? <Loader2 className="animate-spin" size={16} /> : notifyStatus === 'success' ? 'Saved' : 'Notify'}
                 </button>
@@ -415,9 +412,6 @@ const Gummyte = () => {
               {faqs.map((faq, index) => (
                 <FaqItem key={index} question={faq.question} answer={faq.answer} />
               ))}
-            </div>
-            <div className="pt-8 text-center">
-              <a href="#" className="text-sm text-white border-b border-neutral-700 hover:border-white transition-colors">Consult a healthcare professional.</a>
             </div>
           </div>
         )}
@@ -488,7 +482,7 @@ const Gummyte = () => {
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-neutral-500">
                  <div className="p-4 border border-neutral-900">
                    <span className="block text-xs font-mono text-neutral-600 mb-1">EMAIL</span>
-                   connect@gummyte.lab
+                   gummytecore@gmail.com
                  </div>
                  <div className="p-4 border border-neutral-900">
                    <span className="block text-xs font-mono text-neutral-600 mb-1">LOCATION</span>
@@ -560,16 +554,17 @@ const Gummyte = () => {
               Gummyte Performance Labs &copy; 2024
             </span>
           </p>
-          <div className="flex justify-center gap-6 text-xs text-neutral-500">
+          {/* UPDATED: Added flex-wrap for better mobile scaling */}
+          <div className="flex justify-center flex-wrap gap-x-6 gap-y-3 text-xs text-neutral-500">
             <button onClick={() => navigate('contact')} className="hover:text-white transition-colors">Contact</button>
-            <span className="text-neutral-800">|</span>
+            <span className="text-neutral-800 hidden sm:inline">|</span>
             <button onClick={() => navigate('privacy')} className="hover:text-white transition-colors">Privacy</button>
-            <span className="text-neutral-800">|</span>
+            <span className="text-neutral-800 hidden sm:inline">|</span>
             <button onClick={() => navigate('terms')} className="hover:text-white transition-colors">Terms</button>
-            <span className="text-neutral-800">|</span>
+            <span className="text-neutral-800 hidden sm:inline">|</span>
             <button onClick={() => navigate('status')} className="hover:text-white transition-colors">Transparency</button>
           </div>
-          <p className="text-[10px] text-neutral-700 max-w-lg mx-auto leading-relaxed">
+          <p className="text-[10px] text-neutral-700 max-w-lg mx-auto leading-relaxed px-4">
             These statements have not been evaluated by the FSSAI. This product is not intended to diagnose, treat, cure, or prevent any disease. Results vary by individual.
           </p>
         </div>
